@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon.svg"
+    />
+    <script defer src="./scripts.js" type="module"></script>
+    <title>Kanban Task Management</title>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <nav class="side-bar" id="side-bar-div">
+      <div id="side-logo-div">
+        <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
+      </div>
+
+      <div class="boards-nav-links-div" id="boards-nav-links-div">
+        <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
+        <button class="board-btn">Launch Career</button>
+      </div>
+    </nav>
+
+    <!-- Layout -->
+    <div id="layout">
+      <header id="header" class="sticky-header">
+        <div class="header-name-div">
+          <img
+            src="./assets/favicon.svg"
+            alt="logo-mobile"
+            class="logo-mobile"
+          />
+          <h2 class="header-board-name" id="header-board-name">
+            Launch Career
+          </h2>
+        </div>
+
+        <!-- Add Task -->
+        <button
+          id="open-create-modal"
+          class="add-task-btn"
+          aria-label="Add New Task"
+        >
+          <span class="add-task-btn__plus">+</span>
+          <span class="add-task-btn__text">Add New Task</span>
+        </button>
+      </header>
+
+      <div class="container">
+        <main class="card-column-main">
+          <!-- TODO -->
+          <div class="column-div" data-status="todo">
+            <div id="todo-head-div" class="column-head-div">
+              <span class="dot" id="todo-dot"></span>
+              <h4 id="toDoText" class="columnHeader">TODO (0)</h4>
+            </div>
+            <div class="tasks-container"></div>
+          </div>
+
+          <!-- DOING -->
+          <div class="column-div" data-status="doing">
+            <div id="doing-head-div" class="column-head-div">
+              <span class="dot" id="doing-dot"></span>
+              <h4 id="doingText" class="columnHeader">DOING (0)</h4>
+            </div>
+            <div class="tasks-container"></div>
+          </div>
+
+          <!-- DONE -->
+          <div class="column-div" data-status="done">
+            <div id="done-head-div" class="column-head-div">
+              <span class="dot" id="done-dot"></span>
+              <h4 id="doneText" class="columnHeader">DONE (0)</h4>
+            </div>
+            <div class="tasks-container"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal (native <dialog>) -->
+    <dialog id="task-modal">
+      <!-- Disable native browser validation UI -->
+      <form id="task-form" novalidate>
+        <div class="modal-header">
+          <h3 id="modal-title">Add New Task</h3>
+          <button
+            type="button"
+            class="close-btn"
+            id="close-modal-btn"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </div>
+
+        <input type="hidden" id="task-id" name="id" />
+
+        <label for="task-title">Title</label>
+        <input
+          type="text"
+          id="task-title"
+          name="title"
+          placeholder="e.g. Take chilled break"
+        />
+
+        <label for="task-desc">Description</label>
+        <textarea
+          id="task-desc"
+          name="description"
+          rows="4"
+          placeholder="e.g Pet your dog, have a cup of coffee,
+dance to your favourite song and come
+back to crush this challenge."
+        ></textarea>
+
+        <label for="task-status">Status</label>
+        <div class="select-wrap">
+          <select id="task-status" name="status">
+            <option value="todo">todo</option>
+            <option value="doing">doing</option>
+            <option value="done">done</option>
+          </select>
+          <span class="select-chevron">▾</span>
+        </div>
+
+        <div class="modal-actions">
+          <button id="submit-task-btn" type="submit" class="create-task-btn">
+            Create Task
+          </button>
+        </div>
+
+        <!-- Single red tip we position next to the first invalid field -->
+        <div id="form-error-tip" class="error-tip" hidden>
+          ❗ Please fill out this field.
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

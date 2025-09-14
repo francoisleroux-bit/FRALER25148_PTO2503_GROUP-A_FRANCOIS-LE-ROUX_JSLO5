@@ -1,4 +1,4 @@
-# Kanban Task Board — README
+# Kanban Task Board 
 
 ## Overview
 

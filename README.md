@@ -1,4 +1,4 @@
-# Kanban Task Board — README (Plain-English)
+# Kanban Task Board — README
 
 ## Overview
 
